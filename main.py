@@ -19,7 +19,6 @@ def main():
     print(stack.top.next_node.data)
     print(stack.top.next_node.next_node.data)
     print(stack.top.next_node.next_node.next_node)
-    #print(stack.top.next_node.next_node.next_node.data)
 
     stack = Stack()
     stack.push('data1')

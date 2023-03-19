@@ -32,4 +32,4 @@ class Stack():
             return last_node.data
         else:
             self.top = None
-            return None
+            return AttributeError

@@ -4,42 +4,31 @@ from utils.node import Node
 from utils.stack import Stack
 
 
-class Test_Stack(unittest.TestCase):
-    def SetUp(self):
-        self.stack = Stack()
-        self.node = Node(10)
+class TestStack(unittest.TestCase):
 
-    def test_stack__init__(self):
-        self.node_10 = Node(10)
-        self.assertEqual(Node(10).data, self.node_10.data)
+    def setUp(self) -> None:
+        self.stack = Stack()
+
+    def tearDown(self) -> None:
+        self.stack.top = None
 
     def test_push(self):
-        self.stack = Stack()
-        self.node_10 = Node(10)
-        self.node_20 = Node(20)
-        self.stack.push(self.node_10)
-        self.stack.push(self.node_20)
-        self.assertEqual(len(self.stack.elements), 2)
+        self.stack.push('data_1')
+        self.stack.push('data_2')
 
-    def test_pop(self):
-        self.stack = Stack()
-        self.node_10 = Node(10)
-        self.node_20 = Node(20)
-        self.node_30 = Node(30)
-        self.stack.push(self.node_10)
-        self.stack.push(self.node_20)
-        self.stack.push(self.node_30)
-        self.assertEqual(len(self.stack.elements), 3)
-        self.stack.pop()
-        self.assertEqual(len(self.stack.elements), 2)
-        self.stack.pop()
-        self.assertEqual(len(self.stack.elements), 1)
-        self.assertEqual(self.stack.pop().data, self.node_10.data)
-        self.assertEqual(len(self.stack.elements), 0)
-        self.assertIsNone(self.stack.pop())
+        self.assertEqual(self.stack.top.data, 'data_2')
+        self.assertEqual(self.stack.top.next_node.data, 'data_1')
 
-    def test_data(self):
-        self.node_10 = Node(10)
-        self.stack = Stack()
-        self.stack.push(self.node_10)
-        self.assertEqual(str(self.stack.top.data), "10")
+    def test_pull(self):
+        self.stack.push('data_1')
+        self.stack.push('data_2')
+
+        self.assertEqual(self.stack.pull(), 'data_2')
+        self.assertEqual(self.stack.pull(), 'data_1')
+
+    def test_empty_stack(self):
+        self.stack.push('data_1')
+
+        self.assertEqual(self.stack.pull(), 'data_1')
+        with self.assertRaises(AttributeError):
+            self.stack.pull()

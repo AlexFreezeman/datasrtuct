@@ -15,9 +15,8 @@ class Stack:
             node.next_node = self.top
         self.top = node
 
-    def pull(self) -> any:
+    def pop(self) -> any:
         node = self.top
         data = self.top.data
         self.top = node.next_node
         return data
-

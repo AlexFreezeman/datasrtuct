@@ -10,10 +10,6 @@ class test_queue(unittest.TestCase):
         self.assertIsNone(queue.tail)
 
     def test_enqueue(self):
-#        node_10 = Node(10)
-#        node_20 = Node(20)
-#        node_30 = Node(30)
-#        node_40 = Node(40)
         queue = Queue()
         queue.enqueue("data1")
         queue.enqueue("data2")

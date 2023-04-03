@@ -19,16 +19,16 @@ class TestStack(unittest.TestCase):
         self.assertEqual(self.stack.top.data, 'data_2')
         self.assertEqual(self.stack.top.next_node.data, 'data_1')
 
-    def test_pull(self):
+    def test_pop(self):
         self.stack.push('data_1')
         self.stack.push('data_2')
 
-        self.assertEqual(self.stack.pull(), 'data_2')
-        self.assertEqual(self.stack.pull(), 'data_1')
+        self.assertEqual(self.stack.pop(), 'data_2')
+        self.assertEqual(self.stack.pop(), 'data_1')
 
     def test_empty_stack(self):
         self.stack.push('data_1')
 
-        self.assertEqual(self.stack.pull(), 'data_1')
+        self.assertEqual(self.stack.pop(), 'data_1')
         with self.assertRaises(AttributeError):
-            self.stack.pull()
+            self.stack.pop()

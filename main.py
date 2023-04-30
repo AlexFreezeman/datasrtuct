@@ -55,6 +55,12 @@ def main():
     print(queue.tail.next_node)
 #    print(queue.tail.next_node.data)
 
+    # task 4
+    print(queue.dequeue())
+    print(queue.dequeue())
+    print(queue.dequeue())
+    print(queue.dequeue())
+
 
 if __name__ == "__main__":
     main()

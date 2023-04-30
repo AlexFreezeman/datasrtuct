@@ -20,3 +20,16 @@ class test_queue(unittest.TestCase):
         self.assertIs(queue.tail.data, "data4")
         self.assertIsNone(queue.tail.next_node)
 
+    def test_dequeue(self):
+        # Создаем пустую очередь
+        queue = Queue()
+
+        # Добавляем данных в очередь
+        queue.enqueue('data1')
+        queue.enqueue('data2')
+        queue.enqueue('data3')
+
+        assert queue.dequeue() == 'data1'
+        assert queue.dequeue() == 'data2'
+        assert queue.dequeue() == 'data3'
+        assert queue.dequeue() is None
